@@ -19,11 +19,14 @@ using namespace std;
 
 double maxoffdiag ( double ** A, int * k, int * l, int n );
 void rotate ( double ** A, double ** R, int k, int l, int n );
+void findeigenvalue(int n,double ** A, int *position);
+void createtextfile(int n, double h, double **R, int position);
 
 
 // Setting up the eigenvector matrix
 int main()
 {
+    int position;
     int n;
     cout << "Select the total number of steps" << endl;
     cin >> n;
@@ -39,17 +42,20 @@ int main()
     h = rho_max/n;
     e = -1/(h*h);
 
-    for(int i = 0;i < n-1; i++) //assigning roh_i`s
+    //assigning roh_i`s
+    for(int i = 0;i < n-1; i++)
     {
         rho_i[i] = (i+1) * h;
     }
 
-    for(int i = 0; i < n-1; i++)    //assigning d[i]`s
+    //assigning d[i]`s
+    for(int i = 0; i < n-1; i++)
     {
         d[i] = (2/(h*h))+(rho_i[i]*rho_i[i]);
     }
 
-    double **A = new double *[n-1]; //assigning the matrix A
+    //assigning the matrix A
+    double **A = new double *[n-1];
     for(int i = 0; i < n-1; i++)
     {
         A[i] = new double [n-1];
@@ -64,7 +70,8 @@ int main()
 
     double **R = new double*[n-1];
 
-    for ( int i = 0; i < n-1; i++ )  //assigning the matrix R
+    //assigning the matrix R
+    for ( int i = 0; i < n-1; i++ )
     {
         R[i] = new double [n-1];
         for ( int j = 0; j < n-1; j++ )
@@ -80,8 +87,8 @@ int main()
         }
     }
 
-    //From here on the we start solving the equation
 
+    //From here on the we start solving the equation
 
     int k, l;
     double epsilon = 1.0e-8;
@@ -89,25 +96,17 @@ int main()
     int iterations = n-2;                           //it has this value because of the next for-loop
     double max_offdiag = maxoffdiag ( A, &k, &l, n );
 
-    for(int i = 0; i < n-2 ; i++)                  //make the rotation for every first non-diagonal Matrixelement
+    //makes the rotation for every first non-diagonal Matrixelement
+    for(int i = 0; i < n-2 ; i++)
     {
         k = i;
         l = i +1;
         rotate ( A, R, k, l, n );
     }
 
+    //The Jacobi algorithm gets executed
     while ( fabs(max_offdiag) > epsilon && iterations < max_number_iterations )
     {
-        /*     for(int i = 0; i < n-1; i++)     // Cout of A for test
-        {
-            for(int j = 0; j < n-1; j++)
-            {
-               cout << A[i][j] << "     " ;
-
-            }
-            cout << endl;
-        } cout << endl << endl << endl; */
-
 
         rotate ( A, R, k, l, n );
         max_offdiag = maxoffdiag ( A, &k, &l, n );
@@ -115,27 +114,20 @@ int main()
 
     }
 
-    cout << "Number of iterations: " << iterations << endl;
-    cout << "The eigenvalues are: \n";
-    for(int i = 0; i < n-1; i++)     // Gives out the Eigenvalues
-    {
 
-           cout << A[i][i] << endl;
-    }
+    /* //Test: Gives out every calculated eigenvalue
+   cout << "Number of iterations: " << iterations << endl;
 
-    ofstream Textfile("Jacobi_eigenvector.txt");
-
+    cout << "Eigenvalues: \n";
     for(int i = 0; i < n-1; i++)
     {
-        Textfile << h*(i+1) << "    ";
-        for(int j = 0; j < n-1; j++)
-        {
-            Textfile << R[i][j] << "    ";
-        }
-        Textfile << endl;
+        cout << A[i][i] << endl;
     }
-     Textfile.close();
+    cout << endl;*/
 
+    findeigenvalue(n,A, &position);
+    createtextfile(n,h,R,position);
+    cout << "The calculated value for this eigenvalue is: " << A[position][position] << endl << endl;
 
 
     delete [] rho_i;
@@ -154,6 +146,45 @@ int main()
     return 0;
 }
 
+
+//The function finds the position of that eigenvector in the matrix and saves it in the variable 'position'
+void findeigenvalue(int n,double ** A, int *position)
+{
+    double eigenvalue, difference;
+
+    difference = 2.0;
+
+    cout << "Which eigenvalue would you like to find?" << endl << endl;
+    cin >> eigenvalue;
+
+    for(int i = 0; i < n-1; i++)
+    {
+        if(fabs(A[i][i] - eigenvalue) < difference)
+        {
+            difference = fabs(A[i][i] - eigenvalue);
+            *position = i;
+        }
+    }
+    if(difference >= 2)
+    {
+        cout << "The eigenvalue could not be found!" << endl;
+    }
+}
+
+//Creates a textfile which contains the eigenvector to the eigenvector you found in findeigenvalue
+void createtextfile(int n,double h,double **R, int position)
+{
+    ofstream Textfile("Jacobi_eigenvector.txt");           //Saves eigenvectors in a Textfile
+
+    for(int i = 0; i < n-1; i++)
+    {
+        Textfile << h*(i+1) << "    " << R[i][position] << endl;
+    }
+    Textfile.close();
+
+    cout << "A file containing the Eigenvector to your eigenvalue was created!" << endl << endl;
+
+}
 
 // Function to find the maximum matrix element. Can you figure out a more
 // elegant algorithm?
@@ -176,7 +207,7 @@ double maxoffdiag ( double ** A, int * k, int * l, int n )
 }
 
 
-// Function to find the values of cos and sin
+// Function to find the values of cos and sin and then to rotate
 void rotate ( double ** A, double ** R, int k, int l, int n )
 {
     double s, c;
@@ -229,3 +260,14 @@ void rotate ( double ** A, double ** R, int k, int l, int n )
     }
     return;
 }
+
+/*  // Cout of A for test
+
+     for(int i = 0; i < n-1; i++)
+    for(int j = 0; j < n-1; j++)
+    {
+       cout << A[i][j] << "     " ;
+
+    }
+    cout << endl;
+} cout << endl << endl << endl; */
