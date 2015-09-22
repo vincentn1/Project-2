@@ -19,14 +19,15 @@ using namespace std;
 
 double maxoffdiag ( double ** A, int * k, int * l, int n );
 void rotate ( double ** A, double ** R, int k, int l, int n );
-void findeigenvalue(int n,double ** A, int *position);
+void findeigenvalue(int n,double ** A, int *position,int option, double eigenvalue);
 void createtextfile(int n, double h, double **R, int position);
 
 
 // Setting up the eigenvector matrix
 int main()
 {
-    int position;
+    double eigenvalue = 0;
+    int answer, position, option;
     int n;
     cout << "Select the total number of steps" << endl;
     cin >> n;
@@ -113,6 +114,7 @@ int main()
         iterations++;
 
     }
+    cout << "Iterations: " << iterations << endl << endl;
 
 
     /* //Test: Gives out every calculated eigenvalue
@@ -125,10 +127,33 @@ int main()
     }
     cout << endl;*/
 
-    findeigenvalue(n,A, &position);
-    createtextfile(n,h,R,position);
-    cout << "The calculated value for this eigenvalue is: " << A[position][position] << endl << endl;
 
+
+    cout << "Do yout want to\n 1: Find a specific Eigenvalue\n 2: Want to know the first 3 calculated eigenvalues\n";
+    cin >> answer;
+
+    //Gives out your choosen eigenvalue and saves its eigenvector in a textfile
+    if(answer == 1)
+    {
+        option = 1;
+        findeigenvalue(n,A, &position,option,eigenvalue);
+        createtextfile(n,h,R,position);
+        cout << "The calculated value for this eigenvalue is: " << A[position][position] << endl << endl;
+    }
+
+    //Gives out the first 3 calculated eigenvalues
+    if(answer == 2)
+    {
+        option = 2;
+        for(int i = 3; i <= 11;i= i + 4)
+        {
+            eigenvalue = i;
+            findeigenvalue(n,A, &position,option,eigenvalue);
+            cout << "EV to " << i << " : " << A[position][position] << endl;
+
+        }
+        cout << endl;
+    }
 
     delete [] rho_i;
     for (int i = 0; i < n-1; i++)
@@ -148,26 +173,46 @@ int main()
 
 
 //The function finds the position of that eigenvector in the matrix and saves it in the variable 'position'
-void findeigenvalue(int n,double ** A, int *position)
+void findeigenvalue(int n,double ** A, int *position, int option, double eigenvalue)
 {
-    double eigenvalue, difference;
+
+    double difference;
 
     difference = 2.0;
 
-    cout << "Which eigenvalue would you like to find?" << endl << endl;
-    cin >> eigenvalue;
-
-    for(int i = 0; i < n-1; i++)
+    if(option == 1)
     {
-        if(fabs(A[i][i] - eigenvalue) < difference)
+        cout << "Which eigenvalue would you like to find?" << endl << endl;
+        cin >> eigenvalue;
+
+        for(int i = 0; i < n-1; i++)
         {
-            difference = fabs(A[i][i] - eigenvalue);
-            *position = i;
+            if(fabs(A[i][i] - eigenvalue) < difference)
+            {
+                difference = fabs(A[i][i] - eigenvalue);
+                *position = i;
+            }
+        }
+        if(difference >= 2)
+        {
+            cout << "The eigenvalue could not be found!" << endl;
         }
     }
-    if(difference >= 2)
+
+    if(option == 2)
     {
-        cout << "The eigenvalue could not be found!" << endl;
+        for(int i = 0; i < n-1; i++)
+        {
+            if(fabs(A[i][i] - eigenvalue) < difference)
+            {
+                difference = fabs(A[i][i] - eigenvalue);
+                *position = i;
+            }
+        }
+        if(difference >= 2)
+        {
+            cout << "The eigenvalue could not be found!" << endl;
+        }
     }
 }
 
