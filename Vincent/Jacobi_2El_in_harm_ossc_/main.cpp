@@ -19,7 +19,8 @@ using namespace std;
 
 double maxoffdiag ( double ** A, int * k, int * l, int n );
 void rotate ( double ** A, double ** R, int k, int l, int n );
-void findeigenvalue(int n,double ** A, int *position,int option, double eigenvalue);
+void findeigenvalue(int n,double ** A, int *position, double eigenvalue);
+void findeigenvalue2(int n,double ** A, int *positioni);
 void createtextfile(int n, double h, double **R, int position);
 
 
@@ -27,6 +28,7 @@ int main()
 {
     double eigenvalue = 0;
     int answer, position, option, loop = 1;
+    int positioni[3];
     int n;
     cout << "Select the total number of steps" << endl;
     cin >> n;
@@ -36,11 +38,14 @@ int main()
     double *rho_i = new double [n-1];
     double *d = new double [n-1];
     double e;
+    double omega, omega2;
 
-    rho_max = 6;
+    omega = 1;
+    rho_max = 5;
 
     h = rho_max/n;
     e = -1/(h*h);
+    omega2 = omega * omega;
 
     //assigning roh_i`s
     for(int i = 0;i < n-1; i++)
@@ -51,7 +56,7 @@ int main()
     //assigning d[i]`s
     for(int i = 0; i < n-1; i++)
     {
-        d[i] = (2/(h*h))+(rho_i[i]*rho_i[i]);
+        d[i] = (2/(h*h))+omega2*(rho_i[i]*rho_i[i])+1/rho_i[i];
     }
 
     //assigning the matrix A
@@ -96,13 +101,13 @@ int main()
     int iterations = n-2;                           //it has this value because of the next for-loop
     double max_offdiag = maxoffdiag ( A, &k, &l, n );
 
-/*    //makes the rotation for every first non-diagonal Matrixelement
+    //makes the rotation for every first non-diagonal Matrixelement
     for(int i = 0; i < n-2 ; i++)
     {
         k = i;
         l = i +1;
         rotate ( A, R, k, l, n );
-    }*/
+    }
 
     //The Jacobi algorithm gets executed
     while ( fabs(max_offdiag) > epsilon && iterations < max_number_iterations )
@@ -136,8 +141,7 @@ int main()
     //Gives out your choosen eigenvalue and saves its eigenvector in a textfile
     if(answer == 1)
     {
-        option = 1;
-        findeigenvalue(n,A, &position,option,eigenvalue);
+        findeigenvalue(n,A, &position, eigenvalue);
         createtextfile(n,h,R,position);
         cout << "The calculated value for this eigenvalue is: " << A[position][position] << endl << endl;
     }
@@ -145,12 +149,10 @@ int main()
     //Gives out the first 3 calculated eigenvalues
     if(answer == 2)
     {
-        option = 2;
-        for(int i = 3; i <= 11;i= i + 4)
+        findeigenvalue2( n, A, positioni);
+        for(int i = 0; i < 3; i++)
         {
-            eigenvalue = i;
-            findeigenvalue(n,A, &position,option,eigenvalue);
-            cout << "EV to " << i << " : " << A[position][position] << endl;
+            cout << i+1 << ". eigenvalue: " << A[positioni[i]][positioni[i]] << endl;
 
         }
         cout << endl;
@@ -190,48 +192,64 @@ int main()
 
 
 //The function finds the position of that eigenvector in the matrix and saves it in the variable 'position'
-void findeigenvalue(int n,double ** A, int *position, int option, double eigenvalue)
+void findeigenvalue(int n,double ** A, int *position, double eigenvalue)
 {
 
     double difference;
 
     difference = 2.0;
 
-    if(option == 1)
-    {
-        cout << "Which eigenvalue would you like to find?" << endl << endl;
-        cin >> eigenvalue;
-        cout << endl;
+    cout << "Which eigenvalue would you like to find?" << endl << endl;
+    cin >> eigenvalue;
+    cout << endl;
 
-        for(int i = 0; i < n-1; i++)
+    for(int i = 0; i < n-1; i++)
+    {
+        if(fabs(A[i][i] - eigenvalue) < difference)
         {
-            if(fabs(A[i][i] - eigenvalue) < difference)
+            difference = fabs(A[i][i] - eigenvalue);
+            *position = i;
+        }
+    }
+    if(difference >= 2)
+    {
+        cout << "The eigenvalue could not be found!" << endl;
+    }
+}
+
+void findeigenvalue2(int n,double ** A, int *positioni)
+{
+    for(int i = 0; i < 3; i++)
+    {
+        positioni[i] = 1;
+    }
+    for(int i = 0; i < 3; i++)
+    {
+        if(i == 0)
+        {
+            for(int j = 0; j < n-1; j++)
             {
-                difference = fabs(A[i][i] - eigenvalue);
-                *position = i;
+                if(A[j][j] < A[positioni[i]][positioni[i]])
+                {
+                    positioni[i] = j;
+                }
+
             }
         }
-        if(difference >= 2)
+        else
         {
-            cout << "The eigenvalue could not be found!" << endl;
+            for(int j = 0; j < n-1; j++)
+            {
+                if((A[j][j] < A[positioni[i]][positioni[i]]) && (A[j][j] > A[positioni[i-1]][positioni[i-1]]))
+                {
+                    positioni[i] = j;
+                }
+
+            }
         }
     }
 
-    if(option == 2)
-    {
-        for(int i = 0; i < n-1; i++)
-        {
-            if(fabs(A[i][i] - eigenvalue) < difference)
-            {
-                difference = fabs(A[i][i] - eigenvalue);
-                *position = i;
-            }
-        }
-        if(difference >= 2)
-        {
-            cout << "The eigenvalue could not be found!" << endl;
-        }
-    }
+
 }
 
 //Creates a textfile which contains the eigenvector to the eigenvector you found in findeigenvalue
