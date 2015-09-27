@@ -1,14 +1,10 @@
 /*
-Jacobi's method for finding eigenvalues
-eigenvectors of the symetric matrix A.
-The eigenvalues of A will be on the diagonal
-of A, with eigenvalue i being A[i][i].
-The j-th component of the i-th eigenvector
-is stored in R[i][j].
-A: input matrix (n x n)
-R: empty matrix for eigenvectors (n x n)
-n: dimention of matrices
+This Programm is for evaluating the eigenfunctions of
+two electrons in a harmonic osscillator with Coulomb interaction between each other.
+The eigenfunctions are depending on r.
+We are calculating in eV and nm.
 */
+
 #include <iostream>
 #include <cmath>
 #include <fstream>
@@ -19,15 +15,25 @@ using namespace std;
 //void jacobi_method ( double ** A, double ** R, int n );
 
 void findeigenvalue(int n,double *A, int *position, double eigenvalue);
-void findeigenvalue2(int n,double ** A, int *positioni);
+void findeigenvalue2(int n,double *A, int *positioni);
 void createtextfile(int n, double h, double **R, int position);
 double pythag(double a, double b);
 void tqli(double *d, double *e, int n, double **z);
 
 int main()
 {
+    //initializing physical constants
+    double k;                       //k reflects the strength of the oscillator potential
+    double coulombinteraction;      //coulombinteraction = beta * e^2
+    double phyfactor;               //phyfactor = (hquer*hquer)/m
+
+    phyfactor = 7.61997*1e-6;
+    coulombinteraction = 1.44;
+    k = 0.1;
+
+    //initializing non-physical values
     double eigenvalue = 0;
-    int answer, position, option, loop = 1;
+    int answer, position, loop = 1;
     int positioni[3];
     int n;
     cout << "Select the total number of steps" << endl;
@@ -38,19 +44,15 @@ int main()
     double *rho_i = new double [n-1];
     double *d = new double [n-1];
     double *e = new double [n-1];
-    double omega, omega2;
 
-    omega = 1;
-    rho_max = 5;
+    rho_max = 3;
 
     h = rho_max/n;
-
-    omega2 = omega * omega;
 
     //assigning e[i]`s
     for(int i = 0;i < n-1; i++)
     {
-        e[i] = -1/(h*h);
+        e[i] = -phyfactor/(h*h);
     }
 
     //assigning roh_i`s
@@ -62,7 +64,7 @@ int main()
     //assigning d[i]`s
     for(int i = 0; i < n-1; i++)
     {
-        d[i] = (2/(h*h))+omega2*(rho_i[i]*rho_i[i])+1/rho_i[i];
+        d[i] = ((2*phyfactor)/(h*h))+0.25*k*(rho_i[i]*rho_i[i])+coulombinteraction*1/rho_i[i];
     }
 
     //assigning the matrix A
@@ -89,18 +91,14 @@ int main()
 
 
     //From here on the we start solving the equation
-
-    int k, l;
-    double epsilon = 1.0e-8;
-    int max_number_iterations =  n * n * n;
-    int iterations = n-2;                           //it has this value because of the next for-loop
-
-
     tqli(d, e, n-1, R);
 
     for(int i = 0; i < n-1; i++)
     {
-        cout << d[i] << endl;
+        for(int j = 0; j < n-1; j++)
+        {
+        R[i][j] = fabs(R[i][j]);
+        }
     }
 
 
@@ -129,17 +127,17 @@ int main()
         cout << "The calculated value for this eigenvalue is: " << d[position] << endl << endl;
     }
 
-   /* //Gives out the first 3 calculated eigenvalues
+    //Gives out the first 3 calculated eigenvalues
     if(answer == 2)
     {
-        findeigenvalue2( n, A, positioni);
+        findeigenvalue2( n, d, positioni);
         for(int i = 0; i < 3; i++)
         {
-            cout << i+1 << ". eigenvalue: " << A[positioni[i]][positioni[i]] << endl;
+            cout << i+1 << ". eigenvalue: " << d[positioni[i]] << endl;
 
         }
         cout << endl;
-    }*/
+    }
 
     //Gives out all calculated eigenvalues
     if(answer == 3)
@@ -196,7 +194,7 @@ void findeigenvalue(int n,double *A, int *position, double eigenvalue)
     }
 }
 
-void findeigenvalue2(int n,double ** A, int *positioni)
+void findeigenvalue2(int n,double *A, int *positioni)
 {
     for(int i = 0; i < 3; i++)
     {
@@ -208,7 +206,7 @@ void findeigenvalue2(int n,double ** A, int *positioni)
         {
             for(int j = 0; j < n-1; j++)
             {
-                if(A[j][j] < A[positioni[i]][positioni[i]])
+                if(A[j] < A[positioni[i]])
                 {
                     positioni[i] = j;
                 }
@@ -219,7 +217,7 @@ void findeigenvalue2(int n,double ** A, int *positioni)
         {
             for(int j = 0; j < n-1; j++)
             {
-                if((A[j][j] < A[positioni[i]][positioni[i]]) && (A[j][j] > A[positioni[i-1]][positioni[i-1]]))
+                if((A[j] < A[positioni[i]]) && (A[j] > A[positioni[i-1]]))
                 {
                     positioni[i] = j;
                 }

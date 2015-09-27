@@ -1,13 +1,5 @@
 /*
-Jacobi's method for finding eigenvalues
-eigenvectors of the symetric matrix A.
-The eigenvalues of A will be on the diagonal
-of A, with eigenvalue i being A[i][i].
-The j-th component of the i-th eigenvector
-is stored in R[i][j].
-A: input matrix (n x n)
-R: empty matrix for eigenvectors (n x n)
-n: dimention of matrices
+This Programm plots the matrixsize against the number of iterations for the Jacobi algoritm.
 */
 #include <iostream>
 #include <cmath>
@@ -30,7 +22,7 @@ int main()
     int max;
 
     rho_max = 100;
-    max = 300;  //Deciding the end of the for-loop
+    max = 200;  //Deciding the end of the for-loop
 
     for(int n = 2; n <= max+1; n++)
     {
@@ -94,7 +86,7 @@ int main()
         iterations++;
 
     }
-    cout << "Iterations: " << iterations << endl << endl;
+    cout << n << " \Iterations: " << iterations << endl << endl;
 
 
     /* //Test: Gives out every calculated eigenvalue
