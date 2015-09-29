@@ -1,0 +1,12 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction And Motivation}{3}
+\contentsline {section}{\numberline {2}Theory}{3}
+\contentsline {subsection}{\numberline {2.1}Rewriting Schr\IeC {\"o}dinger's equation as eigenvalue problem}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}One electron in a harmonic oscillator potential}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Two interacting electrons in a harmonic oscillator potential}{3}
+\contentsline {subsection}{\numberline {2.2}Jacobi's method}{3}
+\contentsline {section}{\numberline {3}Execution}{3}
+\contentsline {subsection}{\numberline {3.1}Implementing the algorithm}{3}
+\contentsline {subsection}{\numberline {3.2}Setting and Testing of Parameters}{3}
+\contentsline {subsection}{\numberline {3.3}Results}{3}
+\contentsline {section}{\numberline {4}Comparison and discussion of the results}{5}

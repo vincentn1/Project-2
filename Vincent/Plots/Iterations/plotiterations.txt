@@ -1,0 +1,13 @@
+set title ''
+set xlabel 'n'
+set ylabel 'Iterations'
+set xrange [0:200]
+set yrange [0:80000]
+set grid
+set loadpath 'C:\Users\Vincent\Documents\GitHub\Project-2\Vincent\Plots\Iterations'
+#set key font ",25"
+
+plot 'iterations_against_matrixsize_r10_nmax200.txt' title '{/Symbol r}_m_a_x = 10', 'iterations_against_matrixsize_r100_nmax200.txt' title '{/Symbol r}_m_a_x = 100', x*x*1.6 lc rgb 'green' title 'f(n) = 1.6*n^2', x*x*0.08 title 'g(n) = 0.08*n^2'
+
+
+#{/Symbol w}_r

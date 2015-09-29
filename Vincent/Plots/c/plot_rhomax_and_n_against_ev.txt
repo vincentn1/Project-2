@@ -1,0 +1,15 @@
+set title ''
+set xlabel '{/Symbol r}_m_a_x'
+set x2label 'n'
+set ylabel 'first eigenvalue'
+set xrange [3:50]
+#set yrange [3.6:4.2]
+set x2range [10:200]
+set x2tics 20
+set grid
+set loadpath 'C:\Users\Vincent\Documents\GitHub\Project-2\Vincent\Plots\c'
+#set key font ",25"
+
+plot 'Rhomax_against_Ev_n150.txt' title '{/Symbol r}_m_a_x', 'n_ against_Ev_rhomax10.txt' title 'n'
+
+#{/Symbol r}_r

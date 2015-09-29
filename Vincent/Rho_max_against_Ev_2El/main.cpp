@@ -1,18 +1,9 @@
 /*
-Jacobi's method for finding eigenvalues
-eigenvectors of the symetric matrix A.
-The eigenvalues of A will be on the diagonal
-of A, with eigenvalue i being A[i][i].
-The j-th component of the i-th eigenvector
-is stored in R[i][j].
-A: input matrix (n x n)
-R: empty matrix for eigenvectors (n x n)
-n: dimention of matrices
+This Programm creates a textfile to plot Rho_max or n against the first eigenvalue of our Problem
 */
 #include <iostream>
 #include <cmath>
 #include <fstream>
-#include <time.h>
 
 using namespace std;
 
@@ -20,28 +11,39 @@ using namespace std;
 
 double maxoffdiag ( double ** A, int * k, int * l, int n );
 void rotate ( double ** A, double ** R, int k, int l, int n );
-void findeigenvalue(int n,double ** A, int *position,int option, double eigenvalue);
+void findeigenvalue(int n,double ** A, int *position, double eigenvalue);
+void findeigenvalue2(int n,double ** A, int *positioni);
 void createtextfile(int n, double h, double **R, int position);
 
 
 int main()
 {
+    ofstream table("Rhomax_against_Ev.txt");
     double eigenvalue = 0;
     int answer, position, option, loop = 1;
+    int positioni = 1;
     int n;
-    cout << "Select the total number of steps" << endl;
-    cin >> n;
+    //cout << "Select the total number of steps" << endl;
+    //cin >> n;
 
     double h;
-    double rho_max;
+    double rho_max = 10;
+
+    for(n = 10; n <= 200; n += 1)
+    {
     double *rho_i = new double [n-1];
     double *d = new double [n-1];
+    double **A = new double *[n-1];
+    double **R = new double*[n-1];
     double e;
+    double omega, omega2;
 
-    rho_max = 6;
+    omega = 1;
+
 
     h = rho_max/n;
     e = -1/(h*h);
+    omega2 = omega * omega;
 
     //assigning roh_i`s
     for(int i = 0;i < n-1; i++)
@@ -52,11 +54,10 @@ int main()
     //assigning d[i]`s
     for(int i = 0; i < n-1; i++)
     {
-        d[i] = (2/(h*h))+(rho_i[i]*rho_i[i]);
+        d[i] = (2/(h*h))+omega2*(rho_i[i]*rho_i[i])+(1/rho_i[i]);
     }
 
     //assigning the matrix A
-    double **A = new double *[n-1];
     for(int i = 0; i < n-1; i++)
     {
         A[i] = new double [n-1];
@@ -69,7 +70,6 @@ int main()
         }
     }
 
-    double **R = new double*[n-1];
 
     //assigning the matrix R
     for ( int i = 0; i < n-1; i++ )
@@ -97,10 +97,6 @@ int main()
     int iterations = n-2;                           //it has this value because of the next for-loop
     double max_offdiag = maxoffdiag ( A, &k, &l, n );
 
-    clock_t start, finish;
-    start = clock();
-
-
     //makes the rotation for every first non-diagonal Matrixelement
     for(int i = 0; i < n-2 ; i++)
     {
@@ -118,10 +114,6 @@ int main()
         iterations++;
 
     }
-
-    finish = clock();
-    cout << "Needed time for the algorithm in seconds: " << ( ( finish - start ) /CLOCKS_PER_SEC ) << endl << endl;
-
     cout << "Iterations: " << iterations << endl << endl;
 
 
@@ -136,49 +128,13 @@ int main()
     cout << endl;*/
 
 
-    while(loop == 1)
-    {
 
-    cout << "Do yout want to\n 1: Find a specific Eigenvalue\n 2: Want to know the first 3 calculated eigenvalues\n 3: Give out all eigenvalues\n";
-    cin >> answer;
 
-    //Gives out your choosen eigenvalue and saves its eigenvector in a textfile
-    if(answer == 1)
-    {
-        option = 1;
-        findeigenvalue(n,A, &position,option,eigenvalue);
-        createtextfile(n,h,R,position);
-        cout << "The calculated value for this eigenvalue is: " << A[position][position] << endl << endl;
-    }
+    findeigenvalue2( n, A, &positioni);
 
-    //Gives out the first 3 calculated eigenvalues
-    if(answer == 2)
-    {
-        option = 2;
-        for(int i = 3; i <= 11;i= i + 4)
-        {
-            eigenvalue = i;
-            findeigenvalue(n,A, &position,option,eigenvalue);
-            cout << "EV to " << i << " : " << A[position][position] << endl;
+    table << n << "   " << A[positioni][positioni] << endl;
 
-        }
-        cout << endl;
-    }
 
-    //Gives out all calculated eigenvalues
-    if(answer == 3)
-    {
-        for(int i = 0; i < n-1; i++)
-        {
-            cout << A[i][i] << endl;
-        }
-        cout << endl;
-
-    }
-
-    cout << "Do you want to do someshing else?\n 1: yes\n 2: no" << endl;
-    cin >> loop;
-    }
 
 
     delete [] rho_i;
@@ -193,53 +149,50 @@ int main()
     }
     delete[] R;
     delete[] d;
+    }
+
+    table.close();
 
     return 0;
 }
 
 
 //The function finds the position of that eigenvector in the matrix and saves it in the variable 'position'
-void findeigenvalue(int n,double ** A, int *position, int option, double eigenvalue)
+void findeigenvalue(int n,double ** A, int *position, double eigenvalue)
 {
 
     double difference;
 
     difference = 2.0;
 
-    if(option == 1)
-    {
-        cout << "Which eigenvalue would you like to find?" << endl << endl;
-        cin >> eigenvalue;
-        cout << endl;
+    cout << "Which eigenvalue would you like to find?" << endl << endl;
+    cin >> eigenvalue;
+    cout << endl;
 
-        for(int i = 0; i < n-1; i++)
+    for(int i = 0; i < n-1; i++)
+    {
+        if(fabs(A[i][i] - eigenvalue) < difference)
         {
-            if(fabs(A[i][i] - eigenvalue) < difference)
-            {
-                difference = fabs(A[i][i] - eigenvalue);
-                *position = i;
-            }
-        }
-        if(difference >= 2)
-        {
-            cout << "The eigenvalue could not be found!" << endl;
+            difference = fabs(A[i][i] - eigenvalue);
+            *position = i;
         }
     }
-
-    if(option == 2)
+    if(difference >= 2)
     {
-        for(int i = 0; i < n-1; i++)
+        cout << "The eigenvalue could not be found!" << endl;
+    }
+}
+
+void findeigenvalue2(int n,double ** A, int *positioni)
+{
+
+    for(int j = 0; j < n-1; j++)
+    {
+        if(A[j][j] < A[*positioni][*positioni])
         {
-            if(fabs(A[i][i] - eigenvalue) < difference)
-            {
-                difference = fabs(A[i][i] - eigenvalue);
-                *position = i;
-            }
+            *positioni = j;
         }
-        if(difference >= 2)
-        {
-            cout << "The eigenvalue could not be found!" << endl;
-        }
+
     }
 }
 
