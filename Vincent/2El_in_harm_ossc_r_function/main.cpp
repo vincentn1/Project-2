@@ -29,7 +29,7 @@ int main()
 
     phyfactor = 7.61997*1e-6;
     coulombinteraction = 1.44;
-    k = 0.1;
+    k = 1;
 
     //initializing non-physical values
     double eigenvalue = 0;
@@ -45,7 +45,7 @@ int main()
     double *d = new double [n-1];
     double *e = new double [n-1];
 
-    rho_max = 3;
+    rho_max = 2;
 
     h = rho_max/n;
 
@@ -66,9 +66,6 @@ int main()
     {
         d[i] = ((2*phyfactor)/(h*h))+0.25*k*(rho_i[i]*rho_i[i])+coulombinteraction*1/rho_i[i];
     }
-
-    //assigning the matrix A
-
 
     double **R = new double*[n-1];
 
@@ -92,26 +89,6 @@ int main()
 
     //From here on the we start solving the equation
     tqli(d, e, n-1, R);
-
-    for(int i = 0; i < n-1; i++)
-    {
-        for(int j = 0; j < n-1; j++)
-        {
-        R[i][j] = fabs(R[i][j]);
-        }
-    }
-
-
-    /* //Test: Gives out every calculated eigenvalue
-   cout << "Number of iterations: " << iterations << endl;
-
-    cout << "Eigenvalues: \n";
-    for(int i = 0; i < n-1; i++)
-    {
-        cout << A[i][i] << endl;
-    }
-    cout << endl;*/
-
 
     while(loop == 1)
     {
