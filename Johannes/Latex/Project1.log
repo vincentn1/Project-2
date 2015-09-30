@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.30)  22 SEP 2015 18:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.30)  23 SEP 2015 18:57
 entering extended mode
 **Project1.tex
 (Project1.tex
@@ -845,22 +845,30 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
  [2]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 23.
- [3] (Project1.aux) ) 
+
+
+LaTeX Warning: Reference `parameters' on page 3 undefined on input line 37.
+
+[3] (Project1.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4142 strings out of 493698
- 52115 string characters out of 3144403
- 113560 words of memory out of 3000000
- 7367 multiletter control sequences out of 15000+200000
- 74757 words of font info for 85 fonts, out of 3000000 for 9000
+ 4148 strings out of 493698
+ 52173 string characters out of 3144403
+ 116560 words of memory out of 3000000
+ 7368 multiletter control sequences out of 15000+200000
+ 76143 words of font info for 90 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 28i,6n,24p,745b,198s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.e
-nc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/fourier/fourier-mlit.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/fourier/fourier-ms.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putb8a.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/adobe/utopia/putri8a.pfb>
-Output written on Project1.pdf (3 pages, 54449 bytes).
+ 28i,6n,24p,753b,198s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/fourier/fourier-mlit.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/fourier/fourier-ms.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/adobe/utopia/putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/ado
+be/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr
+i8a.pfb>
+Output written on Project1.pdf (3 pages, 60454 bytes).
 PDF statistics:
  33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
