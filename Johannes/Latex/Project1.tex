@@ -26,16 +26,38 @@ In many fields of both mathematics and physics, we often come to the point that 
 \subsection{Jacobi's method}
 \section{Execution}
 \subsection{Implementing the algorithm}
+Our main goal in this project was to implement our own algorithm for Jacobi's method to compute the eigenvalues of the equation discussed above. This was done in the source files that are found under XXX. First, our program asks for the desired number of steps $n$ and sets up the matrix and the vectors for the eigenvalue equation as described in section \ref{Schroedinger EV}, as well as a matrix $\hat{R}$ which is used for to compute the eigenvectors respectively the eigenfunctions. Then, it starts the actual Jacobi's method: It looks for the absolutely highest non-diagonal element of the matrix in the function \emph{maxoffdiag}, and, while this is higher than the chosen tolerance $\epsilon$, it performs a rotation around the line and the column of this element in the function \emph{rotation}.
+
+AT the end, our program gives the user the possibility to print out all eigenvalues, a specific one or only the first three eigenvalues.
 \subsection{Setting and Testing of Parameters}
-%Check this section again!
-In both cases, whether we deal with only one particle or with two, we have three parameters to be set, resulting in two degrees of freedom that have an effect on the accuracy of our results. The first and most obvious parameter is $n$, the number of grid points we use. Using a higher value of $n$, we gain more precision as the step length decreases, but at the same time, we will end up with a larger matrix that needs more memory (proportional to $n^2$). Most important, the number of similarity transformations needed to calculate the eigenvalues goes like $n^3$, leading to a very long computation time for large matrices. The highest possible value we used for $n$ was $1000$, resulting in more than 45 minutes of computation time!
 
-The second parameter that we can alter is $\rho_{max}$, the maximum value of $\rho$. In theory, this value should be infinite, which is just not possible for this numeric solution. In our case, the higher an eigenvalue is, the more its calculation depends on the choice of $\rho_{max}$. Therefore the challenge was to set this parameter to a value which resulted in stable and consistent results for the first three eigenvalues without being to high, as a higher value would also increase our step length $h$ if we don't change $n$ accordingly.
+In both cases, whether we deal with only one particle or with two, we have three parameters to be set, resulting in two degrees of freedom that have an effect on the accuracy of our results. We tested several set-ups for those three parameters for the one particle case to obtain the best and took slight changes to adjust it for the case with two interacting particles.
 
-The last degree of freedom is to set the tolerance for the non-diagonal matrix elements that are supposed to become zero. This value determines implicitly how many similarity transformations are being operated until the non-diagonal elements are considered zero. A smaller value can lead to higher precision in the eigenvalues, but will at the same time increase the computation time again.
+The first and most obvious parameter is $n$, the number of grid points we use. Using a higher value of $n$, we gain more precision as the step length decreases, but at the same time, we will end up with a larger matrix that needs more memory (proportional to $n^2$). Most important, the number of similarity transformations needed to calculate the eigenvalues goes like $n^3$, leading to a very long computation time for large matrices. The highest possible value we used for $n$ was $1000$, resulting in more than 45 minutes of computation time! Altering $n$ had the most effect on our results, so we decided to take a relatively high value for this parameter.
 
-We tested different set-ups with different values of $n$, $rho_{max}$ and $epsilon$ with the results shown in table \ref{parameters}. As we wanted a precision of three leading digits for the three lowest eigenvalues, we decided to use the set-up with $n=$, $rho_{max}=$ and $epsilon=$, which seemed to be a good compromise between precision and computation time and led to the desired results.
-%Table here!
+The second parameter that we can alter is $\rho_{max}$, the maximum value of $\rho$. In theory, this value should be infinite, which is just not possible for this numeric solution. In our case, the higher an eigenvalue is, the more its calculation depends on the choice of $\rho_{max}$. Therefore the challenge was to set this parameter to a value which resulted in stable and consistent results for the first three eigenvalues without being to high, as a higher value would also increase our step length $h$ if we don't change $n$ accordingly. Choosing the right value for this parameter wasn't easy as a higher value would affect the lowest eigenvalue to become more imprecise due to the increasing step length, but would at the same time improve our results for the higher eigenvalues. This is the case since the eigenfunctions of higher eigenvalues extend to a larger value of $\rho$ and are therefore affected more by a relatively small value of $\rho_{max}$.
+
+%ref to Vincents section?
+The last degree of freedom is to set the tolerance for the non-diagonal matrix elements that are supposed to become zero. This value determines implicitly how many similarity transformations are being operated until the non-diagonal elements are considered zero. A smaller value can lead to higher precision in the eigenvalues, but will at the same time increase the computation time again. We found out that changing this value had a comparably small effect on the final results: We tried the values of $\epsilon=10^{-8}$ and $\epsilon=10^{-10}$, which led to no difference at all in five leading digits for the five lowest eigenvalues! Therefore, we decided to choose $\epsilon=10^{-8}$, which obviously needed less computation time.
+
+As said above, we tested different set-ups with different values of $n$ and $\rho_{max}$ with the results shown in tab. \ref{parameters}. As we wanted a precision of three leading digits for the three lowest eigenvalues, we decided to use the set-up with $n=400$, $\rho_{max}=6$ and $\epsilon=10^{-8}$ for our final results of the one particle case, which seemed to be a good compromise between precision and computation time and led to the desired results. For the two particle case, we had to perform some changes to obtain stable results, which are explained in section \ref{Results}.
+\begin{table}[h]
+	\caption{Comparing different set-ups of the parameters $n$ and $\rho_{max}$ for the one particle case\label{parameters}}
+\begin{tabular}{l|lllll}
+$\epsilon=10^{-8}$	&	1. Eigenvalue	&	2. Eigenvalue	&	3. Eigenvalue	&	4. Eigenvalue	&	5. Eigenvalue		\\\hline\hline
+$n=200$, $\rho_{max}=5$	& $	2.9998	$ & $	6.9990	$ & $	10.9979	$ & $	15.0024	$ & $	19.0751	$	\\
+$n=200$, $\rho_{max}=8$	& $	2.9995	$ & $	6.9975	$ & $	10.9939	$ & $	14.9887	$ & $	18.9819	$	\\
+$n=200$, $\rho_{max}=10$	& $	2.9992	$ & $	6.9961	$ & $	10.9905	$ & $	14.9823	$ & $	18.9717	$	\\\hline
+$n=500$, $\rho_{max}=5$	& $	2.99997	$ & $	6.9999	$ & $	10.9998	$ & $	15.0055	$ & $	19.0756	$	\\
+$n=500$, $\rho_{max}=8$	& $	2.99992	$ & $	6.9996	$ & $	10.9990	$ & $	14.9982	$ & $	18.9971	$	\\
+$n=500$, $\rho_{max}=10$	& $	2.99987	$ & $	6.9994	$ & $	10.9985	$ & $	14.9972	$ & $	18.9955	$	\\\hline
+$n=1000$, $\rho_{max}=5$	& $	2.99999	$ & $	6.99996	$ & $	11.0001	$ & $	15.0059	$ & $	19.0746	$	\\
+$n=1000$, $\rho_{max}=8$	& $	2.99998	$ & $	6.9999	$ & $	10.9998	$ & $	14.9995	$ & $	18.9993	$	\\
+$n=1000$, $\rho_{max}=10$	& $	2.99997	$ & $	6.99984	$ & $	10.9996	$ & $	14.9993	$ & $	18.9989	$	\\\hline
+Exact values	& $	3	$ & $	7	$ & $	11	$ & $	15	$ & $	19	$	
+\end{tabular}
+\end{table}
+
 \subsection{Results}
 \section{Comparison and discussion of the results}
 \end{document}
