@@ -1,0 +1,8 @@
+plot [0:200][-0.3:0.3] "plot1.txt" using 1:2 title "Radialfunktion with Energy= 2.99972 " 
+	set xlabel "XLABEL" 
+ 	set ylabel "u(r) -Radial part of the wave function " 
+	set lines
+	set term png 
+	set output "Radialfunktion.png" 
+	replot 
+	set term wxt
