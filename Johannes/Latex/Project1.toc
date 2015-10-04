@@ -7,6 +7,6 @@
 \contentsline {subsection}{\numberline {2.2}Jacobi's method}{3}
 \contentsline {section}{\numberline {3}Execution}{3}
 \contentsline {subsection}{\numberline {3.1}Implementing the algorithm}{3}
-\contentsline {subsection}{\numberline {3.2}Setting and Testing of Parameters}{3}
-\contentsline {subsection}{\numberline {3.3}Results}{4}
-\contentsline {section}{\numberline {4}Comparison and discussion of the results}{4}
+\contentsline {subsection}{\numberline {3.2}Setting and Testing of Parameters}{5}
+\contentsline {subsection}{\numberline {3.3}Results}{5}
+\contentsline {section}{\numberline {4}Comparison and discussion of the results}{5}
