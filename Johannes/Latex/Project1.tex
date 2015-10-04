@@ -28,7 +28,8 @@ In many fields of both mathematics and physics, we often come to the point that 
 \subsection{Implementing the algorithm}
 Our main goal in this project was to implement our own algorithm for Jacobi's method to compute the eigenvalues of the equation discussed above. This was done in the source files that are found under XXX. First, our program asks for the desired number of steps $n$ and sets up the matrix and the vectors for the eigenvalue equation as described in section \ref{Schroedinger EV}, as well as a matrix $\hat{R}$ which is used for to compute the eigenvectors respectively the eigenfunctions. Then, it starts the actual Jacobi's method: It looks for the absolutely highest non-diagonal element of the matrix in the function \emph{maxoffdiag}, and, while this is higher than the chosen tolerance $\epsilon$, it performs a rotation around the line and the column of this element in the function \emph{rotation}.
 
-AT the end, our program gives the user the possibility to print out all eigenvalues, a specific one or only the first three eigenvalues.
+As a simple test case for our algorithm, we took a $2\times2$ matrix which it solved correctly within 2 steps.
+At the end, our program gives the user the possibility to print out all eigenvalues, a specific one or only the first three eigenvalues.
 \subsection{Setting and Testing of Parameters}
 
 In both cases, whether we deal with only one particle or with two, we have three parameters to be set, resulting in two degrees of freedom that have an effect on the accuracy of our results. We tested several set-ups for those three parameters for the one particle case to obtain the best and took slight changes to adjust it for the case with two interacting particles.
