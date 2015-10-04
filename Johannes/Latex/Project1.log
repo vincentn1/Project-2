@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.30)  4 OCT 2015 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.30)  4 OCT 2015 19:54
 entering extended mode
 **Project1.tex
 (Project1.tex
@@ -889,45 +889,120 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 \tf@toc=\write3
  [2]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 31.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 33.
+ [3] [4]
 
+LaTeX Warning: Reference `Theory' on page 5 undefined on input line 187.
 
-LaTeX Warning: Reference `Schroedinger EV' on page 3 undefined on input line 37
+[5]
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 199
 .
-
-
-LaTeX Warning: Reference `Theory' on page 3 undefined on input line 37.
-
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 49.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\ts1futs.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\ts1futs.fd"
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
-) [3] [4]
+) [6] [7]
+<tvJacobi_comparison_thick.png, id=31, 1233.10687pt x 659.46375pt>
+File: tvJacobi_comparison_thick.png Graphic file (type png)
 
-LaTeX Warning: Reference `Results' on page 5 undefined on input line 136.
+<use tvJacobi_comparison_thick.png>
+Package pdftex.def Info: tvJacobi_comparison_thick.png used on input line 309.
+(pdftex.def)             Requested size: 308.27596pt x 164.86552pt.
 
-[5] (Project1.aux)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8] <iterations_comparison_notitle.png, id=35, 642.4pt x 385.44pt>
+File: iterations_comparison_notitle.png Graphic file (type png)
+
+<use iterations_comparison_notitle.png>
+Package pdftex.def Info: iterations_comparison_notitle.png used on input line 3
+36.
+(pdftex.def)             Requested size: 289.07733pt x 173.4464pt.
+
+<rhomax_and_n_against_ev.png, id=36, 1927.2pt x 964.60374pt>
+File: rhomax_and_n_against_ev.png Graphic file (type png)
+
+<use rhomax_and_n_against_ev.png>
+Package pdftex.def Info: rhomax_and_n_against_ev.png used on input line 345.
+(pdftex.def)             Requested size: 346.88104pt x 173.62119pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<2Electrons_comparison_thick.png, id=37, 1270.7475pt x 657.95813pt>
+File: 2Electrons_comparison_thick.png Graphic file (type png)
+
+<use 2Electrons_comparison_thick.png>
+Package pdftex.def Info: 2Electrons_comparison_thick.png used on input line 365
+.
+(pdftex.def)             Requested size: 317.6861pt x 164.48912pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<2Electrons_comparison2_thick.png, id=38, 1293.33188pt x 659.46375pt>
+File: 2Electrons_comparison2_thick.png Graphic file (type png)
+
+<use 2Electrons_comparison2_thick.png>
+Package pdftex.def Info: 2Electrons_comparison2_thick.png used on input line 37
+2.
+(pdftex.def)             Requested size: 323.33217pt x 164.86552pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <./tvJacobi_comparison_thick.png> <./iterations_comparison_notitle.png>]
+<comparison_different_k_thick.png, id=42, 481.8pt x 263.48438pt>
+File: comparison_different_k_thick.png Graphic file (type png)
+
+<use comparison_different_k_thick.png>
+Package pdftex.def Info: comparison_different_k_thick.png used on input line 38
+4.
+(pdftex.def)             Requested size: 313.16628pt x 171.2628pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<k1_comparison_2El_n500.png, id=43, 1219.55624pt x 660.96938pt>
+File: k1_comparison_2El_n500.png Graphic file (type png)
+
+<use k1_comparison_2El_n500.png>
+Package pdftex.def Info: k1_comparison_2El_n500.png used on input line 391.
+(pdftex.def)             Requested size: 304.8883pt x 165.24193pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 <./rhomax_and_n_against_ev.png>] [11 <./2Electrons_comparison_thick.png> <.
+/2Electrons_comparison2_thick.png> <./comparison_different_k_thick.png>]
+[12 <./k1_comparison_2El_n500.png>] (Project1.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6041 strings out of 493698
- 77032 string characters out of 3144403
- 190680 words of memory out of 3000000
- 9228 multiletter control sequences out of 15000+200000
- 81141 words of font info for 96 fonts, out of 3000000 for 9000
+ 6110 strings out of 493698
+ 78661 string characters out of 3144403
+ 190945 words of memory out of 3000000
+ 9284 multiletter control sequences out of 15000+200000
+ 82527 words of font info for 101 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 33i,11n,58p,1078b,1347s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,12n,58p,1218b,1347s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/fourier/fourier-mlit.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/fourier/fourier-ms.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/adobe/utopia/putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/ado
-be/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr
-i8a.pfb>
-Output written on Project1.pdf (5 pages, 77270 bytes).
+s/MiKTeX 2.9/fonts/type1/public/fourier/fourier-mex.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/fourier/fourier-ml.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/fourier/fourier-mlit.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/fourier/fourier-ms.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adob
+e/utopia/putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8
+a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putri8a.pfb>
+Output written on Project1.pdf (12 pages, 429992 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
