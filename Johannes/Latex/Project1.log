@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.30)  5 OCT 2015 18:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.30)  5 OCT 2015 19:27
 entering extended mode
 **Project1.tex
 (Project1.tex
@@ -1033,14 +1033,14 @@ LaTeX Font Info:    Try loading font information for TS1+futs on input line 233
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\ts1futs.fd"
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
 ) [7] [8] [9]
-<tvJacobi_comparison_thick.png, id=260, 1233.10687pt x 659.46375pt>
+<tvJacobi_comparison_thick.png, id=265, 1233.10687pt x 659.46375pt>
 File: tvJacobi_comparison_thick.png Graphic file (type png)
 
 <use tvJacobi_comparison_thick.png>
 Package pdftex.def Info: tvJacobi_comparison_thick.png used on input line 343.
 (pdftex.def)             Requested size: 308.27596pt x 164.86552pt.
 
-<iterations_comparison_notitle.png, id=264, 642.4pt x 385.44pt>
+<iterations_comparison_notitle.png, id=269, 642.4pt x 385.44pt>
 File: iterations_comparison_notitle.png Graphic file (type png)
 
 <use iterations_comparison_notitle.png>
@@ -1051,7 +1051,7 @@ Package pdftex.def Info: iterations_comparison_notitle.png used on input line 3
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<rhomax_and_n_against_ev.png, id=267, 1927.2pt x 964.60374pt>
+<rhomax_and_n_against_ev.png, id=272, 1927.2pt x 964.60374pt>
 File: rhomax_and_n_against_ev.png Graphic file (type png)
 
 <use rhomax_and_n_against_ev.png>
@@ -1064,7 +1064,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<2Electrons_comparison_thick.png, id=268, 1270.7475pt x 657.95813pt>
+<2Electrons_comparison_thick.png, id=273, 1270.7475pt x 657.95813pt>
 File: 2Electrons_comparison_thick.png Graphic file (type png)
 
 <use 2Electrons_comparison_thick.png>
@@ -1075,7 +1075,7 @@ Package pdftex.def Info: 2Electrons_comparison_thick.png used on input line 399
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<2Electrons_comparison2_thick.png, id=269, 1293.33188pt x 659.46375pt>
+<2Electrons_comparison2_thick.png, id=274, 1293.33188pt x 659.46375pt>
 File: 2Electrons_comparison2_thick.png Graphic file (type png)
 
 <use 2Electrons_comparison2_thick.png>
@@ -1086,7 +1086,7 @@ Package pdftex.def Info: 2Electrons_comparison2_thick.png used on input line 40
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<comparison_different_k_thick.png, id=273, 481.8pt x 263.48438pt>
+<comparison_different_k_thick.png, id=278, 481.8pt x 263.48438pt>
 File: comparison_different_k_thick.png Graphic file (type png)
 
 <use comparison_different_k_thick.png>
@@ -1099,7 +1099,7 @@ Package pdftex.def Info: comparison_different_k_thick.png used on input line 41
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<k1_comparison_2El_n500.png, id=284, 1219.55624pt x 660.96938pt>
+<k1_comparison_2El_n500.png, id=289, 1219.55624pt x 660.96938pt>
 File: k1_comparison_2El_n500.png Graphic file (type png)
 
 <use k1_comparison_2El_n500.png>
@@ -1112,24 +1112,24 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [11 <./iterations_comparison_notitle.png> <./rhomax_and_n_against_ev.png>]
 [12 <./2Electrons_comparison_thick.png> <./2Electrons_comparison2_thick.png> <.
 /comparison_different_k_thick.png>] [13 <./k1_comparison_2El_n500.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 435.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 441.
 
 [14
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 435.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
  (Project1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 435.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 435.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 441.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 441.
 Package rerunfilecheck Info: File `Project1.out' has not changed.
-(rerunfilecheck)             Checksum: A442A02669CE6E59A034EF2DB5CCB89A;717.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 435.
+(rerunfilecheck)             Checksum: 10D0ED1DA96936D8EF97034402BB1359;765.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 441.
  ) 
 Here is how much of TeX's memory you used:
- 9947 strings out of 493698
- 137581 string characters out of 3144403
+ 9949 strings out of 493698
+ 137601 string characters out of 3144403
  276846 words of memory out of 3000000
- 12921 multiletter control sequences out of 15000+200000
+ 12922 multiletter control sequences out of 15000+200000
  91157 words of font info for 105 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  33i,14n,58p,1246b,1364s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1141,9 +1141,9 @@ nts/type1/public/fourier/fourier-ml.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 ic/fourier/fourier-ms.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia
 /putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on Project1.pdf (14 pages, 470413 bytes).
+Output written on Project1.pdf (14 pages, 473285 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 156 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 372 PDF objects out of 1000 (max. 8388607)
+ 157 named destinations out of 1000 (max. 500000)
+ 124 words of extra memory for PDF output out of 10000 (max. 10000000)
 
