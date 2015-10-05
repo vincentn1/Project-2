@@ -1,0 +1,10 @@
+set title ''
+set xlabel 'r in nm'
+set ylabel '|{/Symbol y}(r)|'
+set xrange [0:3.5]
+#set yrange [-0.15:0.26]
+set grid
+set loadpath 'C:\Users\Vincent\Documents\GitHub\Project-2\Vincent\Plots\d'
+#set key font ",25"
+plot 'k0.1_interaction_2El_n1100.txt' title 'k = 0.1 ev/nm²', 'k1_interaction_2El_n500.txt' title 'k = 1 ev/nm²', 'k5_interaction_2El_n500.txt' title 'k = 5 ev/nm²', 'k20_interaction_2El_n500.txt' title 'k = 20 ev/nm²'
+#{/Symbol r}_r
