@@ -25,13 +25,13 @@
 \newpage
 \tableofcontents
 \newpage
-\section{Introduction And Motivation}
+\section{Introduction and Motivation}
 In many fields of both mathematics and physics, we often come to the point that we have to solve so-called eigenvalue problems, which are equations of the form $\mathbf{A}\cdot\mathbf{v}=\lambda\mathbf{v}$, where $\mathbf{A}$ is a matrix of dimension $n\times n$ and $v$ is a vector of dimension $n$. Equations of this kind occur not only in linear algebra, but also in mechanics and quantum mechanics and will also be a major part of this report. In this project, we are going to rewrite the Schrödinger's equation of one and two electrons in a harmonic oscillator potential in the form of an eigenvalue problem and solve it numerically by implementing Jacobi's method, an algorithm that can be used to solve any eigenvalue problem. This algorithm is based on simple rotations of a given matrix to diagonalize it. We will show how this algorithm works, set it up on our own using C++ and use this program to obtain the eigenvalues of the Schrödinger's equation of electrons in an harmonic oscillator potential that we are going to rewrite as an eigenvalue problem.
 
 \section{Theory}
 This theory part deals with the Schrödinger equation for one or two electrons in a tree dimensional harmonic potential. In particular, we want to solve the Schrödinger equation numerically. Therefore, we rewrite the Schrödinger equation as eigenvalue problem and solve the eigenvalue problem with Jacobi's method. 
 
-\subsection{One electron in a harmonic oscillator potential \label{one electron in harm osc}}
+\subsection{One Electron in a Harmonic Oscillator Potential \label{one electron in harm osc}}
 We are now looking at one electron in a harmonic oscillator potential. 
 The time independent Schrödinger equation in general looks like:
 \begin{align}
@@ -422,16 +422,29 @@ Next we plotted the wave function depending on $r$ in figure \ref{plot2elr}. In 
 \end{figure}
 
 \begin{figure}[h]
-	\includegraphics[scale = 0.5]{first_eigenvalues.png}
+	\includegraphics[scale = 0.5]{k1_comparison_2El_n500_verbessert.png}
 	\centering
-	\caption{Functions to the first three eigenvalues}
+	\caption{Two electrons in a harmonic oscillator with and without Coulomb interaction}
+	\label{plot2elrcoulomb}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[scale = 0.55]{first_eigenvalues.png}
+	\centering
+	\caption{Functions to the first three eigenvalues for two electrons}
 	\label{plot2elef}
 \end{figure}
 
 When we now turn off the coulomb interaction between the two electrons (table \ref{plot2elrcoulomb}), we observe that we obtain the same function like when we observed just one electron.
-
-
+In figure \ref{plot2elef} the functions to the first eigenvalues of our problem with two electrons can be seen. Our calculated eigenvalues for these states are 1.5206 eV, 1.5253 eV and 1.5301 eV(with $n = 500$, $r_{max} = 3 nm$, $k = \frac{eV}{nm2}$).
 \clearpage
-\section{Comparison and discussion of the results} \label{Comparison and results}
 
+\section{Comparison and discussion of the results} \label{Comparison and results}
+All in all, we can say that our algorithm computes reasonable and fairly exact eigenvalues for the case of one electron in a harmonic oscillator that match the analytical values very well. Furthermore, the eigenfunctions seem to be consistent both for the one particle as well as for the two particle case. Nevertheless, the computation time needed by Jacobi's method increases very fast (quadratically) with the number of grid points. Therefore, this algorithm is not the method of choice for this particular problem. We would rather recommend using an algorithm specially designed for tri-diagonal matrices as this is the case for our matrix. For example, the algorithm that is used in the library provided at the Github repository of the course is much faster, as shown above.
+
+The eigenfunctions that we obtained for the two particle case show the effects of the coulomb interaction between the electrons and how changing the oscillator potential affects the distance between the electrons: The lower the Coulomb repulsion or the higher the oscillator potential is, the smaller is the most probable value for the distance between the two particles. This is exactly what we expected qualitatively, although we did not compare the exact results for the two particle case as it is hard to find literature with values for this particular problem.
+
+To sum up, we observed that, although Jacobi's method provided precise results, programs using Householder's algorithm combined with tri-diagonal solvers seem to have a high potential in solving eigenvalue problems in general in a fast and efficient way.
+\section{Source code}
+All the source code used in this project can be found at our Github repository: https://github.com/vincentn1/Project-2
 \end{document}
