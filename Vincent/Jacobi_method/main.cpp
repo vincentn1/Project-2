@@ -1,4 +1,6 @@
 /*
+The Jacobi algoritm of this program is mainly copied from the script of the course "Computational Physics".
+
 Jacobi's method for finding eigenvalues
 eigenvectors of the symetric matrix A.
 The eigenvalues of A will be on the diagonal
@@ -7,7 +9,7 @@ The j-th component of the i-th eigenvector
 is stored in R[i][j].
 A: input matrix (n x n)
 R: empty matrix for eigenvectors (n x n)
-n: dimention of matrices
+n: dimension of matrices
 */
 #include <iostream>
 #include <cmath>
@@ -326,7 +328,7 @@ void rotate ( double ** A, double ** R, int k, int l, int n )
             A[i][l] = c*a_il + s*a_ik;
             A[l][i] = A[i][l];
         }
-        // Finally, we compute the new eigenvectors
+        // The new eigenvectors get computed
         r_ik = R[i][k];
         r_il = R[i][l];
         R[i][k] = c*r_ik - s*r_il;
@@ -334,14 +336,3 @@ void rotate ( double ** A, double ** R, int k, int l, int n )
     }
     return;
 }
-
-/*  // Cout of A for test
-
-     for(int i = 0; i < n-1; i++)
-    for(int j = 0; j < n-1; j++)
-    {
-       cout << A[i][j] << "     " ;
-
-    }
-    cout << endl;
-} cout << endl << endl << endl; */

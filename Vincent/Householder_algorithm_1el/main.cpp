@@ -209,18 +209,6 @@ int main()
 
     }
 
-/*  // Cout of A for test
-
-     for(int i = 0; i < n-1; i++)
-    for(int j = 0; j < n-1; j++)
-    {
-       cout << A[i][j] << "     " ;
-
-    }
-    cout << endl;
-} cout << endl << endl << endl; */
-
-
 double pythag(double a, double b)
 {
   double absa,absb;
@@ -307,3 +295,4 @@ for(l = 0; l < n; l++) {
  */
 
 
+//Source of the tqli and phytag functions is the cpp library from the Github reposetory to the lecture computational physics (ComputationalPhysics1).
