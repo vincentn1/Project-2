@@ -2,9 +2,9 @@ set title ''
 set xlabel 'r in nm'
 set ylabel '|{/Symbol y}(r)|'
 set xrange [0:2]
-#set yrange [-0.15:0.26]
+set yrange [-0.02:0.24]
 set grid
 set loadpath 'C:\Users\Vincent\Documents\GitHub\Project-2\Vincent\Plots\d'
 #set key font ",25"
-plot 'k1_interaction_2El_n500.png' title 'with Coulomb interaction', 'k1_nointeraction_2El_n500.png' title 'without Coulomb interaction'
+plot 'k1_interaction_2El_n500.txt' title 'with Coulomb interaction', 'k1_nointeraction_2El_n500.txt' title 'without Coulomb interaction'
 #{/Symbol r}_r

@@ -415,21 +415,30 @@ In figure \ref{plot2el1} and \ref{plot2el2} the functions to the first eigenvalu
 Next we plotted the wave function depending on $r$ in figure \ref{plot2elr}. In this plot it can be seen again that for a increasing potential (this time we varied it with the variable $k$), the electrons are more likely to be less distant to each other. It can also be observed that the peak of the wave function gets wider for smaller $k$.
 
 \begin{figure}[h]
-	\includegraphics[scale = 0.65]{comparison_different_k_thick.png}
+	\includegraphics[scale = 0.5]{comparison_different_k_thick_verbessert.png}
 	\centering
 	\caption{Two electrons in a harmonic oscillator for different values of $k$}
 	\label{plot2elr}
 \end{figure}
 
 \begin{figure}[h]
-	\includegraphics[scale = 0.25]{k1_comparison_2El_n500.png}
+	\includegraphics[scale = 0.5]{k1_comparison_2El_n500_verbessert.png}
 	\centering
 	\caption{Two electrons in a harmonic oscillator with and without Coulomb interaction}
 	\label{plot2elrcoulomb}
 \end{figure}
 
+\begin{figure}[h]
+	\includegraphics[scale = 0.55]{first_eigenvalues.png}
+	\centering
+	\caption{Functions to the first three eigenvalues for two electrons}
+	\label{plot2elef}
+\end{figure}
+
 When we now turn off the coulomb interaction between the two electrons (table \ref{plot2elrcoulomb}), we observe that we obtain the same function like when we observed just one electron.
+In figure \ref{plot2elef} the functions to the first eigenvalues of our problem with two electrons can be seen. Our calculated eigenvalues for these states are 1.5206 eV, 1.5253 eV and 1.5301 eV(with $n = 500$, $r_{max} = 3 nm$, $k = \frac{eV}{nm2}$).
 \clearpage
+
 \section{Comparison and discussion of the results} \label{Comparison and results}
 All in all, we can say that our algorithm computes reasonable and fairly exact eigenvalues for the case of one electron in a harmonic oscillator that match the analytical values very well. Furthermore, the eigenfunctions seem to be consistent both for the one particle as well as for the two particle case. Nevertheless, the computation time needed by Jacobi's method increases very fast (quadratically) with the number of grid points. Therefore, this algorithm is not the method of choice for this particular problem. We would rather recommend using an algorithm specially designed for tri-diagonal matrices as this is the case for our matrix. For example, the algorithm that is used in the library provided at the Github repository of the course is much faster, as shown above.
 

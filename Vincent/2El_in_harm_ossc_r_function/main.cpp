@@ -45,7 +45,7 @@ int main()
     double *d = new double [n-1];
     double *e = new double [n-1];
 
-    rho_max = 2;
+    rho_max = 3;
 
     h = rho_max/n;
 
